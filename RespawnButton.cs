@@ -54,31 +54,6 @@ public class RespawnButton : MonoBehaviour
         }
     }
 
-    // 此方法用于检测鼠标点击，作为备用方案
-    private void Update()
-    {
-        // 如果鼠标左键被点击
-        if (Input.GetMouseButtonDown(0))
-        {
-            // 检查鼠标是否在此对象上
-            if (RectTransformUtility.RectangleContainsScreenPoint(
-                GetComponent<RectTransform>(),
-                Input.mousePosition,
-                Camera.main))
-            {
-                Debug.Log("检测到按钮区域被点击");
-                OnRespawnButtonClicked();
-            }
-        }
-
-        // 使用R键作为备用重生方法
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("按下R键，调用重生功能");
-            OnRespawnButtonClicked();
-        }
-    }
-
     private void OnRespawnButtonClicked()
     {
         Debug.Log("重生按钮被点击");
@@ -100,9 +75,15 @@ public class RespawnButton : MonoBehaviour
         }
     }
 
-    // 公共方法，可以通过Inspector调用
-    public void TestRespawn()
+    // 可选：保留R键复活功能（建议仅开发调试时打开）
+    /*
+    private void Update()
     {
-        OnRespawnButtonClicked();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("按下R键，调用重生功能");
+            OnRespawnButtonClicked();
+        }
     }
+    */
 }
